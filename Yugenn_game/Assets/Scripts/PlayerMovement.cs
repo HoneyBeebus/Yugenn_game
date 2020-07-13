@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerMovement : MonoBehaviour
 {
     public float speed;
@@ -29,18 +30,28 @@ public class PlayerMovement : MonoBehaviour
 
     //void UpdateAnimationAndMove()
     //{
-      //  if (change != Vector3.zero)
-        //{
-          //  MoveCharacter();
-            //animator.SetFloat("moveX", change.x);
-            //animator.SetFloat("moveY", change.y);
-            //animator.SetBool("moving", true);
-        //}
-        //else
-        //{
-          //  animator.SetBool("moving", false);
-        //}
+    //  if (change != Vector3.zero)
+    //{
+    //  MoveCharacter();
+    //animator.SetFloat("moveX", change.x);
+    //animator.SetFloat("moveY", change.y);
+    //animator.SetBool("moving", true);
     //}
+    //else
+    //{
+    //  animator.SetBool("moving", false);
+    //}
+    //}
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Coins"))
+        {
+            ScoreTextScript.coinAmount += 1;
+            Destroy(other.gameObject);
+        }
+    }
+
 
     void MoveCharacter()
     {
